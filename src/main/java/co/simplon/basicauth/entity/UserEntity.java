@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class UserEntity implements UserDetails {
 
     @Id
@@ -23,7 +23,7 @@ public class UserEntity implements UserDetails {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private Set<RoleEntity> autorities;
+    private Set<RoleEntity> authorities;
 
     public UserEntity() {
     }
@@ -56,11 +56,11 @@ public class UserEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.autorities;
+        return this.authorities;
     }
 
-    public void setAutorities(Set<RoleEntity> autorities) {
-        this.autorities = autorities;
+    public void setAuthorities(Set<RoleEntity> authorities) {
+        this.authorities = authorities;
     }
 
 
